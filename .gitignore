@@ -34,12 +34,11 @@ yarn-error.log*
 ehthumbs.db
 Thumbs.db
 
-# Frontend specific
-frontend/dist/
-frontend/.vite/
-
 # Backend specific
 backend/dist/
+
+# Deployment artifacts
+admin-dist/
 
 # Test coverage
 coverage/

@@ -36,18 +36,18 @@ A comprehensive university class scheduling system built with modern web technol
 - JWT for authentication
 - bcrypt for password hashing
 
-### Frontend
-- React 18 with TypeScript
-- Vite build tool
-- TailwindCSS for styling
-- React Query for server state management
-- React Router for navigation
-- React Hook Form with Zod validation
+### Admin Panel
+- Modern HTML/CSS with vanilla JavaScript
+- Stored in `backend/public` and served directly by Express
+- Uses Fetch API to communicate with the backend REST endpoints
+- Styled with custom red/white Wachamo University branding
 
 ## Project Structure
 
 ```
 online-class-schedule/
+├── api/
+│   └── index.ts             # Serverless API entry point for Vercel
 ├── backend/
 │   ├── src/
 │   │   ├── controllers/     # Request handlers
@@ -56,15 +56,7 @@ online-class-schedule/
 │   │   ├── routes/          # API route definitions
 │   │   ├── services/        # Business logic
 │   │   └── server.ts        # Application entry point
-│   ├── public/              # Static files and admin panel
-│   └── package.json
-├── frontend/
-│   ├── src/
-│   │   ├── components/      # Reusable UI components
-│   │   ├── context/         # React context providers
-│   │   ├── pages/           # Page components
-│   │   ├── services/        # API client
-│   │   └── App.tsx          # Root component
+│   ├── public/              # Wachamo-branded admin panel (static files)
 │   └── package.json
 └── package.json             # Root package with scripts
 ```
@@ -88,7 +80,7 @@ cd online-class-schedule
 npm run install:all
 ```
 
-This command installs dependencies for the root project, backend, and frontend.
+This command installs dependencies for the root project and backend.
 
 ## Configuration
 
@@ -114,30 +106,22 @@ mongodb+srv://username:password@cluster.mongodb.net/class-schedule
 
 ### Development Mode
 
-Start both backend and frontend servers concurrently:
+Start the backend server (which also serves the Wachamo-branded admin panel):
 ```bash
 npm run dev
 ```
 
-Or run them separately:
-
-Backend server:
+Or run it directly from the backend folder:
 ```bash
 cd backend
 npm run dev
 ```
 
-Frontend development server:
-```bash
-cd frontend
-npm run dev
-```
-
 ### Access Points
 
-- Frontend Application: http://localhost:5173
-- Backend API: http://localhost:5000
-- Admin Panel: http://localhost:5000
+- Admin Panel + API: http://localhost:5000
+
+> **API base override**: When deploying the static admin panel separately from the backend, set `window.__API_BASE__` before the embedded script in `backend/public/index.html` to point to the desired API URL. Otherwise, it automatically uses `/api` for production builds and `http://localhost:5000/api` for local development.
 
 ### Default Admin Credentials
 
@@ -208,11 +192,7 @@ The scheduling algorithm enforces the following constraints:
 
 ## Production Build
 
-Build the frontend for production:
-```bash
-cd frontend
-npm run build
-```
+The Wachamo-branded admin panel is served directly from `backend/public`, so no separate frontend build step is required.
 
 Build the backend:
 ```bash

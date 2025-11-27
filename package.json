@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Online Class Scheduling System for University Batches",
   "engines": {
-    "node": "18.x"
+    "node": "20.x"
   },
   "scripts": {
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",

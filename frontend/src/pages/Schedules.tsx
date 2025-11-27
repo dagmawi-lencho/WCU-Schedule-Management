@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { schedulesAPI, batchesAPI, semestersAPI, roomsAPI } from '../services/api';
+import { schedulesAPI, batchesAPI, semestersAPI } from '../services/api';
 import { Plus, Download, AlertCircle } from 'lucide-react';
 
 const Schedules: React.FC = () => {
@@ -50,7 +50,6 @@ const Schedules: React.FC = () => {
 
   const renderScheduleTable = (schedule: any) => {
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-    const shifts = ['morning', 'afternoon'];
 
     return (
       <div className="overflow-x-auto">

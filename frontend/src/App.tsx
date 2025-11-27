@@ -32,7 +32,7 @@ const PrivateRoute: React.FC<{ children: React.ReactNode; requireAdmin?: boolean
 };
 
 const AppRoutes = () => {
-  const { isAuthenticated, isAdmin, isInstructor } = useAuth();
+  const { isAuthenticated, isAdmin } = useAuth();
 
   return (
     <Routes>

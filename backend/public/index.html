@@ -881,7 +881,15 @@
 
     <script>
         // ========== AUTHENTICATION & API CONFIGURATION ==========
-        const API_BASE = 'http://localhost:5000/api';
+        const API_BASE = (() => {
+            const w = typeof window !== 'undefined' ? window : undefined;
+            if (w && w.__API_BASE__) {
+                return w.__API_BASE__;
+            }
+            const hostname = w ? w.location.hostname : 'localhost';
+            const isLocal = hostname === 'localhost' || hostname === '127.0.0.1';
+            return isLocal ? 'http://localhost:5000/api' : '/api';
+        })();
         let authToken = localStorage.getItem('authToken') || null;
         let currentUser = null;
         

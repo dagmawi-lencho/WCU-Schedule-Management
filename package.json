@@ -2,6 +2,9 @@
   "name": "wcu-schedule-management",
   "version": "1.0.0",
   "description": "Online Class Scheduling System for University Batches",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:backend": "cd backend && npm run dev",
